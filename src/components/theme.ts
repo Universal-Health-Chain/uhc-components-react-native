@@ -2,6 +2,7 @@ interface ITheme {
     color: {
       black: string;
       white: string;
+      gray: string;
       primary: string;
       secondary: string;
       dangerPrimary: string;
@@ -13,6 +14,7 @@ interface ITheme {
     color: {
       black: "#313639",
       white: "#ffffff",
+      gray: "#999999",
       primary: "#66cc66",
       secondary: "#33a8d5",
       dangerPrimary: "#D9984F",

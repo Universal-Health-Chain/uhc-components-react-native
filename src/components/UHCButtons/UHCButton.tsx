@@ -4,7 +4,9 @@ import {
   getButtonBackground,
   Button,
   ButtonGradient,
-  ButtonText
+  ButtonText,
+  SecondaryButtonText,
+  SecondaryButton
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -18,15 +20,9 @@ interface IProps {
 
 interface TextIProps {
   text: string;
+  buttonType?: "primary" | "secondary" | "danger";
+  disabled?: boolean;
 }
-
-const UHCButtonTextBold:React.FunctionComponent<TextIProps> = ({ text }) => {
-  const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
-  });
-
-  return <ButtonText>{text}</ButtonText>;
-};
 
 const UHCButton: React.FunctionComponent<IProps> = ({
   text,
@@ -39,21 +35,46 @@ const UHCButton: React.FunctionComponent<IProps> = ({
     "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
-  const UHCButtonText:React.FunctionComponent<TextIProps> = ({ text }) => {
-    return <ButtonText>{text}</ButtonText>;
+  const UHCButtonText: React.FunctionComponent<TextIProps> = ({
+    text,
+    buttonType,
+    disabled
+  }) => {
+    switch (buttonType) {
+      case "secondary":
+        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
+      default:
+        return <ButtonText>{text}</ButtonText>;
+    }
   };
 
-  return (
-    <Button activeOpacity={0.9} onPress={onPress} disabled={disabled}>
-      <ButtonGradient
-        colors={[...getButtonBackground(disabled, buttonType)]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-      >
-        <UHCButtonText text={text} />
-      </ButtonGradient>
-    </Button>
-  );
+  switch (buttonType) {
+    case "secondary":
+        return (
+          <SecondaryButton activeOpacity={0.9} onPress={onPress} disabled={disabled}>
+            <ButtonGradient
+              colors={[...getButtonBackground(disabled, buttonType)]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <UHCButtonText text={text} buttonType={buttonType} />
+            </ButtonGradient>
+          </SecondaryButton>
+        );
+    default:
+        return (
+          <Button activeOpacity={0.9} onPress={onPress} disabled={disabled}>
+            <ButtonGradient
+              colors={[...getButtonBackground(disabled, buttonType)]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <UHCButtonText text={text} buttonType={buttonType} />
+            </ButtonGradient>
+          </Button>
+        );
+  }
+  
 };
 
 UHCButton.defaultProps = {
