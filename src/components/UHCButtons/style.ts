@@ -1,17 +1,27 @@
 import styled from "@emotion/native";
-import theme from "../theme";
+import theme from "uhc-themes";
 import LinearGradient from "react-native-linear-gradient";
 import { Platform } from "react-native";
 
 type IButtonType = "primary" | "secondary" | "danger" | undefined;
 type ISize = "big" | "small" | undefined;
 
+export const getButtonSize = (size: ISize) => {
+  switch (size) {
+    case "small":
+      return { width: "50%" };
+    case "big":
+      return { width: "80%" };
+    default:
+      return { width: "50%" };
+  }
+};
 export const getButtonBackground = (
   disabled: boolean | undefined,
   buttonType: IButtonType
 ) => {
   if (disabled) {
-    return [theme.color.gray,theme.color.gray];
+    return [theme.color.gray, theme.color.gray];
   }
 
   switch (buttonType) {
@@ -27,21 +37,17 @@ export const getButtonBackground = (
 const buttonStyle = {
   alignSelf: "center",
   borderRadius: 50,
-  height: "8%",
-  width: 230,
+  height: 43,
+  //width: 230,
   justifyContent: "center",
-  alignItems: "center",
-  ...Platform.select({
-    ios: { minHeight: 45, maxHeight: 50 },
-    android: { minHeight: 38, maxHeight: 43 }
-  })
+  alignItems: "center"
 };
 
-export const Button = styled.TouchableOpacity(buttonStyle);
-
-export const SecondaryButton = styled.TouchableOpacity({
-  ...buttonStyle,
-  backgroundColor: "white"
+export const Button = styled.TouchableOpacity((props: any) => {
+  return {
+    ...buttonStyle,
+    backgroundColor: props.secondary ? "white" : "transparent"
+  };
 });
 
 const textStyle = {

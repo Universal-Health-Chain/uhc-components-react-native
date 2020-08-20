@@ -6,7 +6,7 @@ import {
   ButtonGradient,
   ButtonText,
   SecondaryButtonText,
-  SecondaryButton
+  getButtonSize
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -48,38 +48,27 @@ const UHCButton: React.FunctionComponent<IProps> = ({
     }
   };
 
-  switch (buttonType) {
-    case "secondary":
-        return (
-          <SecondaryButton activeOpacity={0.9} onPress={onPress} disabled={disabled}>
-            <ButtonGradient
-              colors={[...getButtonBackground(disabled, buttonType)]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <UHCButtonText text={text} buttonType={buttonType} />
-            </ButtonGradient>
-          </SecondaryButton>
-        );
-    default:
-        return (
-          <Button activeOpacity={0.9} onPress={onPress} disabled={disabled}>
-            <ButtonGradient
-              colors={[...getButtonBackground(disabled, buttonType)]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <UHCButtonText text={text} buttonType={buttonType} />
-            </ButtonGradient>
-          </Button>
-        );
-  }
-  
+  return (
+    <Button
+      style={getButtonSize(size)}
+      activeOpacity={0.9}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      <ButtonGradient
+        colors={[...getButtonBackground(disabled, buttonType)]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+      >
+        <UHCButtonText text={text} buttonType={buttonType} />
+      </ButtonGradient>
+    </Button>
+  );
 };
 
 UHCButton.defaultProps = {
   buttonType: "primary",
-  size: "big",
+  size: "small",
   disabled: false
 };
 
