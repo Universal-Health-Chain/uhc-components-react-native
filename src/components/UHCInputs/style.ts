@@ -21,7 +21,6 @@ export const getContainerColor = (
 const inputContainerStyle = {
   width: "100%",
   flexDirection: "row",
-  minHeight: 41,
   alignItems: "stretch",
   alignContent: "stretch",
   justifyContent: "space-between",
@@ -33,7 +32,7 @@ export const InputContainer = styled.View((props: any) => {
 });
 
 const labelStyle = {
-  fontFamily: "TitilliumWeb-SemiBold",
+  fontFamily: "TitilliumWeb-Bold",
   textAlign: "left",
   textAlignVertical: "center",
   height: "100%",
@@ -85,8 +84,7 @@ export const ContainerGradient = styled(LinearGradient)((props: any) => {
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,
-    padding: 1,
-    borderRadius: props.multiline ? 15 : 17,
-    minHeight: 43
+    padding: 2,
+    borderRadius: props.multiline ? 15 : 17
   };
 });

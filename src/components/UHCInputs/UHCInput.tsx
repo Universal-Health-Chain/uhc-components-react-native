@@ -10,7 +10,7 @@ import {
 import { useFonts } from "expo-font";
 
 interface IProps {
-  placeholder?: string;
+  label?: string;
   multiline?: boolean;
   value?: string;
   keyboardType?:
@@ -40,7 +40,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
   IProps
 > = (
   {
-    placeholder,
+    label,
     multiline,
     labelWidth,
     value,
@@ -54,7 +54,8 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
   ref
 ) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf")
+    "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf"),
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -76,10 +77,10 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
       >
         <InputContainer multiline={multiline}>
           <InputLabel multiline={multiline} labelWidth={labelWidth}>
-            {placeholder}
+            {label}
           </InputLabel>
           <UHCTextInput
-            style={[{ width: 95 - parseFloat(labelWidth) + "%" }]}
+            style={[{ width: 90 - parseFloat(labelWidth) + "%" }]}
             multiline={multiline}
             ref={ref}
             maxLength={255}
