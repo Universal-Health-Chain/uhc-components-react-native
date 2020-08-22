@@ -1,6 +1,6 @@
 {
   "name": "uhc-components-react-native",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Components for UHC projects on react native.",
   "main": "index.js",
   "peerDependencies": {
@@ -18,7 +18,9 @@
     "expo-constants": "^9.1.1",
     "expo-file-system": "^9.1.0",
     "expo-font": "^8.2.2",
+    "react-native-elements": "^2.2.1",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-vector-icons": "^7.0.0",
     "uhc-themes": "^1.0.1"
   },
   "devDependencies": {
@@ -31,7 +33,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "reset": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.4.tgz && react-native link && react-native start --reset-cache && react-native run-android"
+    "reset": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.5.tgz && react-native link && react-native start --reset-cache && react-native run-android"
   },
   "repository": {
     "type": "git",

@@ -6,6 +6,22 @@ import { Platform } from "react-native";
 type IButtonType = "primary" | "secondary" | "danger" | undefined;
 type ISize = "big" | "small" | undefined;
 
+export const getIconColor = (
+  disabled: boolean | undefined,
+  buttonType: IButtonType
+) => {
+  if (disabled) return theme.color.white;
+
+  switch (buttonType) {
+    case "secondary":
+      return theme.color.gray;
+    case "danger":
+      return theme.color.dangerPrimary;
+    default:
+      return theme.color.white;
+  }
+};
+
 export const getButtonSize = (size: ISize) => {
   switch (size) {
     case "small":
@@ -43,12 +59,7 @@ const buttonStyle = {
   alignItems: "center"
 };
 
-export const Button = styled.TouchableOpacity((props: any) => {
-  return {
-    ...buttonStyle,
-    backgroundColor: props.secondary ? "white" : "transparent"
-  };
-});
+export const Button = styled.TouchableOpacity(buttonStyle);
 
 const textStyle = {
   fontFamily: "TitilliumWeb-Bold",
@@ -66,11 +77,11 @@ export const SecondaryButtonText = styled.Text({
   color: "#999999",
   backgroundColor: "white",
   borderRadius: 50,
-  width: "100%",
+  alignSelf: "stretch",
   height: "100%"
 });
 
-export const ButtonGradient = styled(LinearGradient)({
+const gradientStyle = {
   height: "100%",
   width: "100%",
   justifyContent: "center",
@@ -81,4 +92,25 @@ export const ButtonGradient = styled(LinearGradient)({
     ios: { minHeight: 45, maxHeight: 50 },
     android: { minHeight: 38, maxHeight: 43 }
   })
+};
+
+export const ButtonGradient = styled(LinearGradient)(gradientStyle);
+
+const iconButtonContainer = {
+  height: "100%",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  alignSelf: "stretch",
+  borderRadius: 50
+};
+
+export const IconButtonContainer = styled.View((props: any) => {
+  return {
+    ...iconButtonContainer,
+    backgroundColor:
+      props.buttonType === "secondary" && !props.disabled
+        ? "white"
+        : "transparent"
+  };
 });
