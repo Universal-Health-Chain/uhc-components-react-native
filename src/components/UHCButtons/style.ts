@@ -74,11 +74,7 @@ const textStyle = {
 export const ButtonText = styled.Text({ ...textStyle, color: "white" });
 export const SecondaryButtonText = styled.Text({
   ...textStyle,
-  color: "#999999",
-  backgroundColor: "white",
-  borderRadius: 50,
-  alignSelf: "stretch",
-  height: "100%"
+  color: "#999999"
 });
 
 const gradientStyle = {
@@ -105,7 +101,7 @@ const iconButtonContainer = {
   borderRadius: 50
 };
 
-export const IconButtonContainer = styled.View((props: any) => {
+export const ButtonInnerContainer = styled.View((props: any) => {
   return {
     ...iconButtonContainer,
     backgroundColor:

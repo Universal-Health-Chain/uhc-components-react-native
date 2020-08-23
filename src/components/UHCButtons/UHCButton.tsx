@@ -6,7 +6,8 @@ import {
   ButtonGradient,
   ButtonText,
   SecondaryButtonText,
-  getButtonSize
+  getButtonSize,
+  ButtonInnerContainer
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -60,7 +61,9 @@ const UHCButton: React.FunctionComponent<IProps> = ({
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
-        <UHCButtonText text={text} buttonType={buttonType} />
+        <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
+          <UHCButtonText text={text} buttonType={buttonType} />
+        </ButtonInnerContainer>
       </ButtonGradient>
     </Button>
   );

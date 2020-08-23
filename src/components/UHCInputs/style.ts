@@ -36,7 +36,6 @@ const labelStyle = {
   textAlign: "left",
   textAlignVertical: "center",
   height: "100%",
-  backgroundColor: "white",
   color: theme.color.gray,
   marginLeft: 5,
   paddingVertical: 5,

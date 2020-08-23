@@ -8,7 +8,7 @@ import {
   SecondaryButtonText,
   getButtonSize,
   getIconColor,
-  IconButtonContainer
+  ButtonInnerContainer
 } from "./style";
 import { IconNames } from "./IconNames";
 import { useFonts } from "expo-font";
@@ -68,7 +68,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
-        <IconButtonContainer disabled={disabled} buttonType={buttonType}>
+        <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
           <Icon
             name={iconName}
             size={iconSize}
@@ -78,7 +78,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
             }}
           />
           <UHCButtonText text={text} buttonType={buttonType} />
-        </IconButtonContainer>
+        </ButtonInnerContainer>
       </ButtonGradient>
     </Button>
   );
