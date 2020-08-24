@@ -1,5 +1,6 @@
 import UHCButton from "./src/components/UHCButtons/UHCButton";
 import UHCIconButton from "./src/components/UHCButtons/UHCIconButton";
 import UHCInput from "./src/components/UHCInputs/UHCInput";
+import UHCDateInput from "./src/components/UHCInputs/UHCDateInput";
 
-export { UHCButton, UHCInput,UHCIconButton };
+export { UHCButton,UHCIconButton, UHCInput,UHCDateInput };

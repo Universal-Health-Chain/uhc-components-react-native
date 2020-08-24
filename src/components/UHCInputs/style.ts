@@ -24,7 +24,8 @@ const inputContainerStyle = {
   alignItems: "stretch",
   alignContent: "stretch",
   justifyContent: "space-between",
-  backgroundColor: "white"
+  backgroundColor: "white",
+  paddingHorizontal: '2%',
 };
 
 export const InputContainer = styled.View((props: any) => {
