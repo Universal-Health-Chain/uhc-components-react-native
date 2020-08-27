@@ -23,7 +23,7 @@ interface IProps {
   onDateChange?: any;
   setInputState: React.Dispatch<any>;
   error?: string;
-  labelWidth: string;
+  labelWidth?: string;
   showDate?: React.Dispatch<any>;
 }
 
@@ -70,10 +70,12 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
             {label}
           </InputLabel>
           <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              width: 90 - parseFloat(labelWidth) + "%"
-            }}
+            style={[
+              {
+                justifyContent: "center"
+              },
+              !!labelWidth && { width: 90 - parseFloat(labelWidth) + "%" }
+            ]}
             activeOpacity={1}
             onPress={() => {
               if (!disabled) {
@@ -92,7 +94,8 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                   color: "#999999"
                 }
               ]}
-            >      
+            >
+                    
               {inputDate &&
                 (() => {
                   if (mode === "date") {

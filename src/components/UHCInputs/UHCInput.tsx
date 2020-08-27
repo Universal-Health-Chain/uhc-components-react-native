@@ -32,7 +32,7 @@ interface IProps {
   setInputState: React.Dispatch<any>;
   error?: string;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
-  labelWidth: string;
+  labelWidth?: string;
 }
 
 const UHCInputWithoutForward: React.ForwardRefRenderFunction<
@@ -80,7 +80,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
             {label}
           </InputLabel>
           <UHCTextInput
-            style={[{ width: 90 - parseFloat(labelWidth) + "%" }]}
+            style={!!labelWidth && { width: 90 - parseFloat(labelWidth) + "%" }}
             multiline={multiline}
             ref={ref}
             maxLength={255}
