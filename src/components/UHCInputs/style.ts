@@ -20,11 +20,10 @@ export const getContainerColor = (
 
 const inputContainerStyle = {
   width: "100%",
-  flexDirection: "row",
-  alignItems: "stretch",
-  alignContent: "stretch",
-  justifyContent: "space-between",
   backgroundColor: "white",
+  alignItems: "center",
+  justifyContent: "center",
+  paddingVertical: "1%"
 };
 
 export const InputContainer = styled.View((props: any) => {
@@ -34,15 +33,11 @@ export const InputContainer = styled.View((props: any) => {
 const labelStyle = {
   fontFamily: "TitilliumWeb-Bold",
   textAlign: "left",
-  textAlignVertical: "center",
-  height: "100%",
   color: theme.color.gray,
-  marginLeft: 5,
-  paddingVertical: 5,
-  lineHeight: 25,
+  marginHorizontal: "7%",
   ...Platform.select({
-    ios: { fontSize: 20 },
-    android: { fontSize: 19 }
+    ios: { fontSize: 15 },
+    android: { fontSize: 15 }
   })
 };
 
@@ -50,7 +45,6 @@ export const InputLabel = styled.Text((props: any) => {
   return [
     {
       ...labelStyle,
-      width: props.labelWidth,
       borderRadius: props.multiline ? 15 : 17
     }
   ];
@@ -59,13 +53,13 @@ export const InputLabel = styled.Text((props: any) => {
 const textStyle = {
   fontFamily: "TitilliumWeb-SemiBold",
   textAlign: "left",
-  paddingLeft: "2%",
-  paddingVertical: 0,
+  textAlignVertical: "center",
   color: theme.color.gray,
   backgroundColor: "white",
-  marginRight: 5,
+  justifyContent: "center",
   borderRadius: 17,
-  lineHeight: 25,
+  paddingVertical: 0,
+  width: "95%",
   ...Platform.select({
     ios: { fontSize: 20 },
     android: { fontSize: 19 }
@@ -82,7 +76,7 @@ export const ContainerGradient = styled(LinearGradient)((props: any) => {
     marginHorizontal: "7%",
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 10,
+    marginVertical: 6,
     padding: 2,
     borderRadius: props.multiline ? 15 : 17
   };

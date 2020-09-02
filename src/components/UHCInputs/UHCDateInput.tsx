@@ -60,22 +60,18 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
 
   return (
     <View>
+      <InputLabel>
+            {label}
+          </InputLabel>
       <ContainerGradient
         colors={[...getContainerColor(error, false)]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
         <InputContainer multiline={false}>
-          <InputLabel multiline={false} labelWidth={labelWidth}>
-            {label}
-          </InputLabel>
+          
           <TouchableOpacity
-            style={[
-              {
-                justifyContent: "center"
-              },
-              !!labelWidth && { width: 90 - parseFloat(labelWidth) + "%" }
-            ]}
+          style={{width: "100%"}}
             activeOpacity={1}
             onPress={() => {
               if (!disabled) {
