@@ -1,6 +1,6 @@
 {
   "name": "uhc-components-react-native",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Components for UHC projects on react native.",
   "main": "index.js",
   "peerDependencies": {
@@ -23,6 +23,7 @@
     "react-native-elements": "^2.2.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modal-datetime-picker": "^8.9.3",
+    "react-native-modal-selector": "^2.0.3",
     "react-native-vector-icons": "^7.0.0",
     "uhc-themes": "^1.0.3"
   },
@@ -36,10 +37,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init_android": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.11.tgz && react-native link && react-native run-android",
-    "init_android_reset_cache": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.11.tgz && react-native link && react-native start --reset-cache && react-native run-android",
-    "init_ios": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.11.tgz && react-native link && react-native run-ios",
-    "init_ios_reset_cache": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.11.tgz && react-native link && react-native start --reset-cache && cd ios && pod install && cd .. & react-native run-ios"
+    "init_android": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.12.tgz && react-native link && react-native run-android",
+    "init_android_reset_cache": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.12.tgz && react-native link && react-native start --reset-cache && react-native run-android",
+    "init_ios": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.12.tgz && react-native link && react-native run-ios"
   },
   "repository": {
     "type": "git",
