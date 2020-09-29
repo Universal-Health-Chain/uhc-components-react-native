@@ -17,7 +17,7 @@ interface IProps {
   label: string;
   value: SelectData,
   initialValue?: SelectData;
-  data: [SelectData];
+  data: SelectData[];
   disabled?: boolean;
   error?: string;
   onChange?: ((option: SelectData) => void) | undefined;

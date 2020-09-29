@@ -44,18 +44,11 @@ const App = () => {
   const [selected, setSelected] = useState(false);
   const pwdRef = useRef(null);
 
-  /* 
-
-
-  
-
   const testDateInput = () => {
     return (
       <View style={{height: 200, justifyContent: 'space-around'}}>
         <UHCDateInput
-          minDate={moment()
-            .subtract('1', 'years')
-            .toISOString()}
+          minDate={moment().subtract('1', 'years').toISOString()}
           label="Fecha de nacimiento"
           setInputState={setError}
         />
@@ -116,7 +109,7 @@ const App = () => {
         />
       </View>
     );
-  }; */
+  };
 
   useEffect(() => {
     console.log('USE EF');
@@ -173,7 +166,7 @@ const App = () => {
       <View style={{width: '80%', justifyContent: 'space-around'}}>
         <UHCButton
           text={'Primary'}
-          buttonType={"primary"}
+          buttonType={'primary'}
           onPress={() => {
             console.log(error);
           }}
@@ -247,7 +240,7 @@ const App = () => {
         justifyContent: 'center',
       }}>
       {/* {testIconButton()} */}
-      {testButton()}
+      {/* {testButton()} */}
       {/* {testInput()} */}
       {
         //testDateInput()
@@ -255,9 +248,7 @@ const App = () => {
       {
         //testRadioButton()
       }
-      {
-        //testSelectItem(data)
-      }
+      {testSelectItem(data)}
     </View>
   );
 };
