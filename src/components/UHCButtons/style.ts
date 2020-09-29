@@ -3,7 +3,12 @@ import theme from "uhc-themes";
 import LinearGradient from "react-native-linear-gradient";
 import { Platform } from "react-native";
 
-type IButtonType = "primary" | "secondary" | "danger" | undefined;
+type IButtonType =
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "secondaryDanger"
+  | undefined;
 type ISize = "big" | "small" | undefined;
 
 export const getIconColor = (
@@ -17,6 +22,8 @@ export const getIconColor = (
       return theme.color.gray;
     case "danger":
       return theme.color.dangerPrimary;
+    case "secondaryDanger":
+      return theme.color.gray;
     default:
       return theme.color.white;
   }
@@ -31,9 +38,13 @@ export const getButtonBackground = (
   }
 
   switch (buttonType) {
+    case "primary":
+      return [theme.color.primary, theme.color.secondary];
     case "secondary":
       return [theme.color.primary, theme.color.secondary];
     case "danger":
+      return [theme.color.dangerPrimary, theme.color.dangerSecondary];
+    case "secondaryDanger":
       return [theme.color.dangerPrimary, theme.color.dangerSecondary];
     default:
       return [theme.color.primary, theme.color.secondary];
@@ -99,22 +110,37 @@ const roundIconButtonContainer = {
   borderRadius: 5000,
 };
 
+const getInnerBackgroundColor = (
+  disabled: boolean | undefined,
+  buttonType: IButtonType
+) => {
+  if (disabled) {
+    return "transparent";
+  }
+
+  switch (buttonType) {
+    case "primary":
+      return "transparent";
+    case "secondary":
+      return "white";
+    case "danger":
+      return "transparent";
+    case "secondaryDanger":
+      return "white";
+    default:
+      return "transparent";
+  }
+};
 export const ButtonInnerContainer = styled.View((props: any) => {
   return {
     ...iconButtonContainer,
-    backgroundColor:
-      props.buttonType === "secondary" && !props.disabled
-        ? "white"
-        : "transparent",
+    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType),
   };
 });
 
 export const RoundButtonInnerContainer = styled.View((props: any) => {
   return {
     ...roundIconButtonContainer,
-    backgroundColor:
-      props.buttonType === "secondary" && !props.disabled
-        ? "white"
-        : "transparent",
+    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType),
   };
 });

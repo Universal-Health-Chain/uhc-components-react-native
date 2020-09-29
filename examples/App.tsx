@@ -173,6 +173,7 @@ const App = () => {
       <View style={{width: '80%', justifyContent: 'space-around'}}>
         <UHCButton
           text={'Primary'}
+          buttonType={"primary"}
           onPress={() => {
             console.log(error);
           }}
@@ -180,6 +181,13 @@ const App = () => {
         <UHCButton
           text={'Secondary'}
           buttonType={'secondary'}
+          onPress={() => {
+            console.log('nice');
+          }}
+        />
+        <UHCButton
+          text={'Secondary danger'}
+          buttonType={'secondaryDanger'}
           onPress={() => {
             console.log('nice');
           }}
@@ -199,7 +207,6 @@ const App = () => {
     return (
       <View style={{height: 200, justifyContent: 'space-around'}}>
         <UHCIconButton
-        
           iconName={'group'}
           onPress={() => {
             console.log('error');
@@ -239,10 +246,8 @@ const App = () => {
         height: '100%',
         justifyContent: 'center',
       }}>
-      {
-        testIconButton()
-      }
-      {/* {testButton()} */}
+      {/* {testIconButton()} */}
+      {testButton()}
       {/* {testInput()} */}
       {
         //testDateInput()

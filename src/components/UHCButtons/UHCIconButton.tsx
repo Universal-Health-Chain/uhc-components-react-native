@@ -50,6 +50,8 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
     disabled,
   }) => {
     switch (buttonType) {
+       case "secondary":
+        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       case "secondary":
         if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       default:

@@ -12,14 +12,14 @@ import { useFonts } from "expo-font";
 
 interface IProps {
   text: string;
-  buttonType?: "primary" | "secondary" | "danger";
+  buttonType?: "primary" | "secondary" | "danger" | "secondaryDanger";
   disabled?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 }
 
 interface TextIProps {
   text: string;
-  buttonType?: "primary" | "secondary" | "danger";
+  buttonType?: "primary" | "secondary" | "danger" | "secondaryDanger";
   disabled?: boolean;
 }
 
@@ -32,6 +32,7 @@ const UHCButton: React.FunctionComponent<IProps> = ({
   const [loaded] = useFonts({
     "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
+  
 
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
@@ -39,6 +40,8 @@ const UHCButton: React.FunctionComponent<IProps> = ({
     disabled,
   }) => {
     switch (buttonType) {
+      case "secondaryDanger":
+        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       case "secondary":
         if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       default:
