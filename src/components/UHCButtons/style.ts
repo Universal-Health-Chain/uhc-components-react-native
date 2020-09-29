@@ -22,16 +22,6 @@ export const getIconColor = (
   }
 };
 
-export const getButtonSize = (size: ISize) => {
-  switch (size) {
-    case "small":
-      return { width: "50%" };
-    case "big":
-      return { width: "80%" };
-    default:
-      return { width: "50%" };
-  }
-};
 export const getButtonBackground = (
   disabled: boolean | undefined,
   buttonType: IButtonType
@@ -53,10 +43,10 @@ export const getButtonBackground = (
 const buttonStyle = {
   alignSelf: "center",
   borderRadius: 50,
-  height: 43,
+  height: 40,
   //width: 230,
   justifyContent: "center",
-  alignItems: "center"
+  alignItems: "center",
 };
 
 export const Button = styled.TouchableOpacity(buttonStyle);
@@ -67,14 +57,14 @@ const textStyle = {
   textAlignVertical: "center",
   ...Platform.select({
     ios: { fontSize: 20 },
-    android: { fontSize: 18 }
-  })
+    android: { fontSize: 18 },
+  }),
 };
 
 export const ButtonText = styled.Text({ ...textStyle, color: "white" });
 export const SecondaryButtonText = styled.Text({
   ...textStyle,
-  color: "#999999"
+  color: "#999999",
 });
 
 const gradientStyle = {
@@ -86,8 +76,8 @@ const gradientStyle = {
   borderRadius: 50,
   ...Platform.select({
     ios: { minHeight: 45, maxHeight: 50 },
-    android: { minHeight: 38, maxHeight: 43 }
-  })
+    android: { minHeight: 38, maxHeight: 43 },
+  }),
 };
 
 export const ButtonGradient = styled(LinearGradient)(gradientStyle);
@@ -98,7 +88,15 @@ const iconButtonContainer = {
   alignItems: "center",
   justifyContent: "space-evenly",
   alignSelf: "stretch",
-  borderRadius: 50
+  borderRadius: 50,
+};
+
+const roundIconButtonContainer = {
+  height: 100,
+  width: 100,
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: 5000,
 };
 
 export const ButtonInnerContainer = styled.View((props: any) => {
@@ -107,6 +105,16 @@ export const ButtonInnerContainer = styled.View((props: any) => {
     backgroundColor:
       props.buttonType === "secondary" && !props.disabled
         ? "white"
-        : "transparent"
+        : "transparent",
+  };
+});
+
+export const RoundButtonInnerContainer = styled.View((props: any) => {
+  return {
+    ...roundIconButtonContainer,
+    backgroundColor:
+      props.buttonType === "secondary" && !props.disabled
+        ? "white"
+        : "transparent",
   };
 });

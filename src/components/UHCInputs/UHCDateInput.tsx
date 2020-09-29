@@ -4,7 +4,7 @@ import {
   InputContainer,
   InputLabel,
   getContainerColor,
-  ContainerGradient
+  ContainerGradient,
 } from "./style";
 import { useFonts } from "expo-font";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -41,13 +41,13 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
     onDateChange,
     setInputState,
     error,
-    showDate
+    showDate,
   },
   ref
 ) => {
   const [loaded] = useFonts({
     "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf"),
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
   const [show, setShow] = useState(false);
@@ -59,19 +59,16 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
   }, [inputDate]);
 
   return (
-    <View>
-      <InputLabel>
-            {label}
-          </InputLabel>
+    <View style={{ width: "100%" }}>
+      <InputLabel>{label}</InputLabel>
       <ContainerGradient
         colors={[...getContainerColor(error, false)]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
         <InputContainer multiline={false}>
-          
           <TouchableOpacity
-          style={{width: "100%"}}
+            style={{ width: "100%" }}
             activeOpacity={1}
             onPress={() => {
               if (!disabled) {
@@ -87,8 +84,8 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                   fontSize: 18,
                   paddingVertical: 0,
                   marginVertical: 0,
-                  color: "#999999"
-                }
+                  color: "#999999",
+                },
               ]}
             >
                     
@@ -110,9 +107,7 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                   value={(() => {
                     if (mode === "time") {
                       return new Date(
-                        moment()
-                          .add(1, "minute")
-                          .format("MM/DD/YYYY HH:mm")
+                        moment().add(1, "minute").format("MM/DD/YYYY HH:mm")
                       );
                     } else {
                       return date
@@ -144,9 +139,7 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                 date={(() => {
                   if (mode === "time") {
                     return new Date(
-                      moment()
-                        .add(1, "minute")
-                        .format("MM/DD/YYYY HH:mm")
+                      moment().add(1, "minute").format("MM/DD/YYYY HH:mm")
                     );
                   } else {
                     return date
@@ -154,7 +147,7 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                       : new Date(moment().format("MM/DD/YYYY"));
                   }
                 })()}
-                onConfirm={date => {
+                onConfirm={(date) => {
                   setShow(false);
                   if (date) {
                     setInputDate(moment(date).toISOString());
@@ -187,7 +180,7 @@ UHCDateInput.defaultProps = {
   mode: "date",
   labelWidth: "30%",
   disabled: false,
-  language: "es"
+  language: "es",
 };
 
 export default UHCDateInput;

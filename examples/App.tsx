@@ -25,14 +25,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-/* import {
+import {
   UHCButton,
   UHCDateInput,
   UHCIconButton,
   UHCInput,
   UHCRadioButton,
   UHCSelectItem,
-} from 'uhc-components-react-native'; */
+} from 'uhc-components-react-native';
+
 import {TouchableOpacity} from 'react-native';
 import moment from 'moment';
 import ModalSelector from 'react-native-modal-selector';
@@ -43,98 +44,10 @@ const App = () => {
   const [selected, setSelected] = useState(false);
   const pwdRef = useRef(null);
 
-  /* const testIconButton = () => {
-    return (
-      <View style={{height: 200, justifyContent: 'space-around'}}>
-        <UHCIconButton
-          text={'Group'}
-          iconName={'group'}
-          onPress={() => {
-            console.log('error');
-          }}
-        />
-        <UHCIconButton
-          text={'Camera'}
-          iconName={'camera'}
-          buttonType={'secondary'}
-          onPress={() => {
-            console.log('error');
-          }}
-        />
-        <UHCIconButton
-          text={'Add'}
-          iconName={'add'}
-          size={'big'}
-          onPress={() => {
-            console.log('error');
-          }}
-        />
-        <UHCIconButton
-          text={'Disabled'}
-          iconName={'add-box'}
-          disabled
-          onPress={() => {
-            console.log('error');
-          }}
-        />
-      </View>
-    );
-  };
+  /* 
 
-  const testButton = () => {
-    return (
-      <View style={{height: 150, justifyContent: 'space-around'}}>
-        <UHCButton
-          text={'Primary'}
-          onPress={() => {
-            console.log(error);
-          }}
-        />
-        <UHCButton
-          text={'Secondary'}
-          buttonType={'secondary'}
-          onPress={() => {
-            console.log('nice');
-          }}
-        />
-        <UHCButton
-          text={'Disabled'}
-          disabled
-          onPress={() => {
-            console.log('nice');
-          }}
-        />
-      </View>
-    );
-  };
 
-  const testInput = () => {
-    return (
-      <View style={{height: 400, justifyContent: 'space-around'}}>
-        <UHCInput value={'Bruno'} label="Nombre" error={error} />
-        <UHCInput
-          value={'NOICEEE'}
-          label="Fecha de nacimiento"
-          onSubmitEditing={() => {
-            if (!!pwdRef && !!pwdRef.current) {
-              pwdRef.current.focus();
-            }
-          }}
-          error={value.value}
-        />
-        <UHCInput setInputState={setError} label="multiline" multiline />
-        <UHCInput
-          setInputState={(val: string) => {
-            console.log(val);
-          }}
-          secureTextEntry
-          ref={pwdRef}
-          label="Password"
-          error={error}
-        />
-      </View>
-    );
-  };
+  
 
   const testDateInput = () => {
     return (
@@ -227,6 +140,99 @@ const App = () => {
   ];
   const [value, setValue] = useState({value: null, label: '-'});
 
+  const testInput = () => {
+    return (
+      <View style={{width: '100%', justifyContent: 'space-around'}}>
+        <UHCInput value={'Bruno'} label="Nombre" error={error} />
+        <UHCInput
+          value={'NOICEEE'}
+          label="Fecha de nacimiento"
+          onSubmitEditing={() => {
+            if (!!pwdRef && !!pwdRef.current) {
+              pwdRef.current.focus();
+            }
+          }}
+          error={value.value}
+        />
+        <UHCInput setInputState={setError} label="multiline" multiline />
+        <UHCInput
+          setInputState={(val: string) => {
+            console.log(val);
+          }}
+          secureTextEntry
+          ref={pwdRef}
+          label="Password"
+          error={error}
+        />
+      </View>
+    );
+  };
+
+  const testButton = () => {
+    return (
+      <View style={{width: '80%', justifyContent: 'space-around'}}>
+        <UHCButton
+          text={'Primary'}
+          onPress={() => {
+            console.log(error);
+          }}
+        />
+        <UHCButton
+          text={'Secondary'}
+          buttonType={'secondary'}
+          onPress={() => {
+            console.log('nice');
+          }}
+        />
+        <UHCButton
+          text={'Disabled'}
+          disabled
+          onPress={() => {
+            console.log('nice');
+          }}
+        />
+      </View>
+    );
+  };
+
+  const testIconButton = () => {
+    return (
+      <View style={{height: 200, justifyContent: 'space-around'}}>
+        <UHCIconButton
+        
+          iconName={'group'}
+          onPress={() => {
+            console.log('error');
+          }}
+        />
+        <UHCIconButton
+          text={'Camera'}
+          iconName={'camera'}
+          buttonType={'secondary'}
+          onPress={() => {
+            console.log('error');
+          }}
+        />
+        <UHCIconButton
+          text={'Add'}
+          iconName={'add'}
+          size={'big'}
+          onPress={() => {
+            console.log('error');
+          }}
+        />
+        <UHCIconButton
+          text={'Disabled'}
+          iconName={'add-box'}
+          disabled
+          onPress={() => {
+            console.log('error');
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <View
       style={{
@@ -234,14 +240,10 @@ const App = () => {
         justifyContent: 'center',
       }}>
       {
-        //testIconButton()
+        testIconButton()
       }
-      {
-        //testButton()
-      }
-      {
-        //testInput()
-        }
+      {/* {testButton()} */}
+      {/* {testInput()} */}
       {
         //testDateInput()
       }
@@ -250,7 +252,7 @@ const App = () => {
       }
       {
         //testSelectItem(data)
-        }
+      }
     </View>
   );
 };

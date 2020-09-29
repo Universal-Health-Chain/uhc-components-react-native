@@ -23,7 +23,7 @@ const inputContainerStyle = {
   backgroundColor: "white",
   alignItems: "center",
   justifyContent: "center",
-  paddingVertical: "1%"
+  paddingVertical: "1%",
 };
 
 export const InputContainer = styled.View((props: any) => {
@@ -37,16 +37,16 @@ const labelStyle = {
   marginHorizontal: "7%",
   ...Platform.select({
     ios: { fontSize: 15 },
-    android: { fontSize: 15 }
-  })
+    android: { fontSize: 15 },
+  }),
 };
 
 export const InputLabel = styled.Text((props: any) => {
   return [
     {
       ...labelStyle,
-      borderRadius: props.multiline ? 15 : 17
-    }
+      borderRadius: props.multiline ? 15 : 17,
+    },
   ];
 });
 
@@ -59,11 +59,12 @@ const textStyle = {
   justifyContent: "center",
   borderRadius: 17,
   paddingVertical: 0,
-  width: "95%",
+  height: 30,
+  width: "100%",
   ...Platform.select({
     ios: { fontSize: 20 },
-    android: { fontSize: 19 }
-  })
+    android: { fontSize: 19 },
+  }),
 };
 
 export const UHCTextInput = styled.TextInput((props: any) => {
@@ -78,6 +79,6 @@ export const ContainerGradient = styled(LinearGradient)((props: any) => {
     alignItems: "center",
     marginVertical: 6,
     padding: 2,
-    borderRadius: props.multiline ? 15 : 17
+    borderRadius: props.multiline ? 15 : 17,
   };
 });

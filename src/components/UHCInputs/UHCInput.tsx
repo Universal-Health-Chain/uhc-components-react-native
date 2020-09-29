@@ -5,7 +5,7 @@ import {
   InputLabel,
   UHCTextInput,
   getContainerColor,
-  ContainerGradient
+  ContainerGradient,
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -49,13 +49,13 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
     onSubmitEditing,
     setInputState,
     error,
-    autoCapitalize
+    autoCapitalize,
   },
   ref
 ) => {
   const [loaded] = useFonts({
     "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf"),
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -68,10 +68,8 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
   }, [inputValue]);
 
   return (
-    <View>
-      <InputLabel>
-            {label}
-          </InputLabel>
+    <View style={{ width: "100%" }}>
+      <InputLabel>{label}</InputLabel>
       <ContainerGradient
         multiline={multiline}
         colors={[...getContainerColor(error, isFocused)]}
@@ -79,7 +77,6 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
         end={{ x: 1, y: 0 }}
       >
         <InputContainer multiline={multiline}>
-          
           <UHCTextInput
             multiline={multiline}
             ref={ref}
@@ -112,7 +109,7 @@ UHCInput.defaultProps = {
   keyboardType: "default",
   secureTextEntry: false,
   labelWidth: "30%",
-  autoCapitalize: "sentences"
+  autoCapitalize: "sentences",
 };
 
 export default UHCInput;

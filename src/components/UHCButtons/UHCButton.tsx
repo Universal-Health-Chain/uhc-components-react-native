@@ -6,15 +6,13 @@ import {
   ButtonGradient,
   ButtonText,
   SecondaryButtonText,
-  getButtonSize,
-  ButtonInnerContainer
+  ButtonInnerContainer,
 } from "./style";
 import { useFonts } from "expo-font";
 
 interface IProps {
   text: string;
   buttonType?: "primary" | "secondary" | "danger";
-  size?: "big" | "small";
   disabled?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 }
@@ -28,18 +26,17 @@ interface TextIProps {
 const UHCButton: React.FunctionComponent<IProps> = ({
   text,
   buttonType,
-  size,
   disabled,
-  onPress
+  onPress,
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
     buttonType,
-    disabled
+    disabled,
   }) => {
     switch (buttonType) {
       case "secondary":
@@ -51,12 +48,13 @@ const UHCButton: React.FunctionComponent<IProps> = ({
 
   return (
     <Button
-      style={getButtonSize(size)}
+      style={{ width: "100%", height: 35 }}
       activeOpacity={0.9}
       onPress={onPress}
       disabled={disabled}
     >
       <ButtonGradient
+        style={{ height: "100%" }}
         colors={[...getButtonBackground(disabled, buttonType)]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -71,8 +69,7 @@ const UHCButton: React.FunctionComponent<IProps> = ({
 
 UHCButton.defaultProps = {
   buttonType: "primary",
-  size: "small",
-  disabled: false
+  disabled: false,
 };
 
 export default UHCButton;

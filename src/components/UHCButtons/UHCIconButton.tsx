@@ -8,7 +8,8 @@ import {
   SecondaryButtonText,
   getButtonSize,
   getIconColor,
-  ButtonInnerContainer
+  ButtonInnerContainer,
+  RoundButtonInnerContainer,
 } from "./style";
 import { IconNames } from "./IconNames";
 import { useFonts } from "expo-font";
@@ -37,16 +38,16 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
   buttonType,
   size,
   disabled,
-  onPress
+  onPress,
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
     buttonType,
-    disabled
+    disabled,
   }) => {
     switch (buttonType) {
       case "secondary":
@@ -56,39 +57,80 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
     }
   };
 
-  return (
-    <Button
-      style={getButtonSize(size)}
-      activeOpacity={0.9}
-      onPress={onPress}
-      disabled={disabled}
-    >
-      <ButtonGradient
-        colors={[...getButtonBackground(disabled, buttonType)]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
+  if (!!text) {
+    return (
+      <Button
+        style={{ width: "100%", height: 35 }}
+        activeOpacity={0.9}
+        onPress={onPress}
+        disabled={disabled}
       >
-        <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
-          <Icon
-            name={iconName}
-            size={iconSize}
-            color={getIconColor(disabled, buttonType)}
-            containerStyle={{
-              paddingHorizontal: 0
-            }}
-          />
-          <UHCButtonText text={text} buttonType={buttonType} />
-        </ButtonInnerContainer>
-      </ButtonGradient>
-    </Button>
-  );
+        <ButtonGradient
+          colors={[...getButtonBackground(disabled, buttonType)]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        >
+          <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
+            <Icon
+              name={iconName}
+              size={iconSize}
+              color={getIconColor(disabled, buttonType)}
+              containerStyle={{
+                paddingHorizontal: 0,
+              }}
+            />
+            <UHCButtonText text={text} buttonType={buttonType} />
+          </ButtonInnerContainer>
+        </ButtonGradient>
+      </Button>
+    );
+  } else {
+    return (
+      <Button
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 5000,
+        }}
+        activeOpacity={0.9}
+        onPress={onPress}
+        disabled={disabled}
+      >
+        <ButtonGradient
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 5000,
+            maxHeight: 1000,
+          }}
+          colors={[...getButtonBackground(disabled, buttonType)]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        >
+          <RoundButtonInnerContainer
+            disabled={disabled}
+            buttonType={buttonType}
+          >
+            <Icon
+              name={iconName}
+              size={iconSize}
+              color={getIconColor(disabled, buttonType)}
+              containerStyle={{
+                paddingHorizontal: 0,
+              }}
+            />
+          </RoundButtonInnerContainer>
+        </ButtonGradient>
+      </Button>
+    );
+  }
 };
 
 UHCIconButton.defaultProps = {
   buttonType: "primary",
   size: "small",
   disabled: false,
-  iconSize: 28
+  iconSize: 28,
 };
 
 export default UHCIconButton;
