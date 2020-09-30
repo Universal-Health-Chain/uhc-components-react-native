@@ -6,7 +6,6 @@ import {
   ButtonGradient,
   ButtonText,
   SecondaryButtonText,
-  getButtonSize,
   getIconColor,
   ButtonInnerContainer,
   RoundButtonInnerContainer,
@@ -16,17 +15,17 @@ import { useFonts } from "expo-font";
 import { Icon } from "react-native-elements";
 
 interface IProps {
-  text: string;
+  text?: string;
   iconName: IconNames;
   iconSize?: number;
   buttonType?: "primary" | "secondary" | "danger";
-  size?: "big" | "small";
+  size?: number;
   disabled?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 }
 
 interface TextIProps {
-  text: string;
+  text?: string;
   buttonType?: "primary" | "secondary" | "danger";
   disabled?: boolean;
 }
@@ -44,13 +43,15 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
     "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
+  console.log(size);
+
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
     buttonType,
     disabled,
   }) => {
     switch (buttonType) {
-       case "secondary":
+      case "secondary":
         if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       case "secondary":
         if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
@@ -90,8 +91,8 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
     return (
       <Button
         style={{
-          width: 100,
-          height: 100,
+          width: size,
+          height: size,
           borderRadius: 5000,
         }}
         activeOpacity={0.9}
@@ -100,8 +101,8 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
       >
         <ButtonGradient
           style={{
-            width: 100,
-            height: 100,
+            width: size,
+            height: size,
             borderRadius: 5000,
             maxHeight: 1000,
           }}
@@ -130,7 +131,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
 
 UHCIconButton.defaultProps = {
   buttonType: "primary",
-  size: "small",
+  size: 100,
   disabled: false,
   iconSize: 28,
 };

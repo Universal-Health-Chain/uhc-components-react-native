@@ -201,6 +201,7 @@ const App = () => {
       <View style={{height: 200, justifyContent: 'space-around'}}>
         <UHCIconButton
           iconName={'group'}
+          size={50}
           onPress={() => {
             console.log('error');
           }}
@@ -239,7 +240,7 @@ const App = () => {
         height: '100%',
         justifyContent: 'center',
       }}>
-      {/* {testIconButton()} */}
+      {testIconButton()}
       {/* {testButton()} */}
       {/* {testInput()} */}
       {
@@ -248,7 +249,7 @@ const App = () => {
       {
         //testRadioButton()
       }
-      {testSelectItem(data)}
+      {/* {testSelectItem(data)} */}
     </View>
   );
 };
