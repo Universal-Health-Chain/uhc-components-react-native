@@ -34,7 +34,7 @@ const labelStyle = {
   fontFamily: "TitilliumWeb-Bold",
   textAlign: "left",
   color: theme.color.gray,
-  marginHorizontal: "7%",
+  marginHorizontal: 8,
   ...Platform.select({
     ios: { fontSize: 15 },
     android: { fontSize: 15 },
@@ -59,8 +59,9 @@ const textStyle = {
   justifyContent: "center",
   borderRadius: 17,
   paddingVertical: 0,
+  marginLeft: 8,
   height: 30,
-  width: "100%",
+  width: "98%",
   ...Platform.select({
     ios: { fontSize: 20 },
     android: { fontSize: 19 },
@@ -73,8 +74,8 @@ export const UHCTextInput = styled.TextInput((props: any) => {
 
 export const ContainerGradient = styled(LinearGradient)((props: any) => {
   return {
-    width: "86%",
-    marginHorizontal: "7%",
+    width: "100%",
+    // marginHorizontal: "7%",
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 6,

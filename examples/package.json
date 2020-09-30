@@ -16,7 +16,7 @@
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modal-selector": "^2.0.3",
     "react-native-vector-icons": "^7.0.0",
-    "uhc-components-react-native": "file:../uhc-components-react-native-1.0.14.tgz",
+    "uhc-components-react-native": "file:../uhc-components-react-native-1.0.15.tgz",
     "uhc-themes": "^1.0.2"
   },
   "devDependencies": {

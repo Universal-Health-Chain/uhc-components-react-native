@@ -240,9 +240,9 @@ const App = () => {
         height: '100%',
         justifyContent: 'center',
       }}>
-      {testIconButton()}
+      {/* {testIconButton()} */}
       {/* {testButton()} */}
-      {/* {testInput()} */}
+      {testInput()}
       {
         //testDateInput()
       }
