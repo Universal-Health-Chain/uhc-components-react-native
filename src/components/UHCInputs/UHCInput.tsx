@@ -60,6 +60,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>(value ? value : "");
+  const [multilineHeight, setMultilineHeight] = useState(20);
 
   useEffect(() => {
     if (setInputState) {
@@ -68,16 +69,26 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
   }, [inputValue]);
 
   return (
-    <View style={{ width: "100%" }}>
+    <View
+      style={{
+        width: "100%",
+        height: multilineHeight + 50,
+      }}
+    >
       <InputLabel>{label}</InputLabel>
       <ContainerGradient
+        multilineHeight={multilineHeight + 20}
         multiline={multiline}
         colors={[...getContainerColor(error, isFocused)]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
-        <InputContainer multiline={multiline}>
+        <InputContainer
+          multiline={multiline}
+          multilineHeight={multilineHeight + 18}
+        >
           <UHCTextInput
+            multilineHeight={multilineHeight + 18}
             multiline={multiline}
             ref={ref}
             maxLength={255}
@@ -92,6 +103,9 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
             onSubmitEditing={onSubmitEditing}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onContentSizeChange={(event) => {
+              setMultilineHeight(event.nativeEvent.contentSize.height);
+            }}
           />
         </InputContainer>
       </ContainerGradient>

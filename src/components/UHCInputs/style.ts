@@ -27,7 +27,13 @@ const inputContainerStyle = {
 };
 
 export const InputContainer = styled.View((props: any) => {
-  return [{ ...inputContainerStyle, borderRadius: props.multiline ? 15 : 17 }];
+  return [
+    {
+      ...inputContainerStyle,
+      borderRadius: props.multiline ? 15 : 17,
+      height: props.multilineHeight,
+    },
+  ];
 });
 
 const labelStyle = {
@@ -60,8 +66,9 @@ const textStyle = {
   borderRadius: 17,
   paddingVertical: 0,
   marginLeft: 8,
-  height: 30,
+
   width: "98%",
+
   ...Platform.select({
     ios: { fontSize: 20 },
     android: { fontSize: 19 },
@@ -69,7 +76,13 @@ const textStyle = {
 };
 
 export const UHCTextInput = styled.TextInput((props: any) => {
-  return [{ ...textStyle, borderRadius: props.multiline ? 15 : 17 }];
+  return [
+    {
+      ...textStyle,
+      borderRadius: props.multiline ? 15 : 17,
+      height: props.multilineHeight,
+    },
+  ];
 });
 
 export const ContainerGradient = styled(LinearGradient)((props: any) => {
@@ -81,5 +94,6 @@ export const ContainerGradient = styled(LinearGradient)((props: any) => {
     marginVertical: 6,
     padding: 2,
     borderRadius: props.multiline ? 15 : 17,
+    height: props.multilineHeight,
   };
 });

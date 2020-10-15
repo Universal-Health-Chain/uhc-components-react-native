@@ -43,8 +43,6 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
     "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
-  console.log(size);
-
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
     buttonType,
@@ -131,7 +129,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
 
 UHCIconButton.defaultProps = {
   buttonType: "primary",
-  size: 100,
+  size: 60,
   disabled: false,
   iconSize: 28,
 };
