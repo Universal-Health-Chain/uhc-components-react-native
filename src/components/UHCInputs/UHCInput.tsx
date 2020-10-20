@@ -72,12 +72,12 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
     <View
       style={{
         width: "100%",
-        height: multilineHeight + 50,
+        height: multiline ? multilineHeight + 50 : 70,
       }}
     >
       <InputLabel>{label}</InputLabel>
       <ContainerGradient
-        multilineHeight={multilineHeight + 20}
+        multilineHeight={multiline ? multilineHeight + 21 : 38}
         multiline={multiline}
         colors={[...getContainerColor(error, isFocused)]}
         start={{ x: 0, y: 0 }}
@@ -85,10 +85,10 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
       >
         <InputContainer
           multiline={multiline}
-          multilineHeight={multilineHeight + 18}
+          multilineHeight={multiline ? multilineHeight + 18 : 35}
         >
           <UHCTextInput
-            multilineHeight={multilineHeight + 18}
+            multilineHeight={multiline ? multilineHeight + 18 : 35}
             multiline={multiline}
             ref={ref}
             maxLength={255}
