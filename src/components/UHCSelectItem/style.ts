@@ -3,8 +3,7 @@ import theme from "uhc-themes";
 import ModalSelector from "react-native-modal-selector";
 
 const externalContainer = {
-  width: "86%",
-  marginHorizontal: "7%",
+  width: "100%",
   marginVertical: 6,
   padding: 2,
   borderRadius: 17

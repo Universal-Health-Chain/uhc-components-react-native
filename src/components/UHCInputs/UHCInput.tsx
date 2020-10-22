@@ -103,7 +103,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
             onSubmitEditing={onSubmitEditing}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            onContentSizeChange={(event) => {
+            onContentSizeChange={(event: any) => {
               setMultilineHeight(event.nativeEvent.contentSize.height);
             }}
           />
