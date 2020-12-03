@@ -65,7 +65,7 @@ const textStyle = {
   justifyContent: "center",
   borderRadius: 17,
   paddingVertical: 0,
-  marginLeft: 8,
+  paddingLeft: 8,
 
   width: "98%",
 
