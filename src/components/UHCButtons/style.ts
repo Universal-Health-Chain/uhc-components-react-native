@@ -97,9 +97,19 @@ const iconButtonContainer = {
   height: "100%",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
   alignSelf: "stretch",
-  borderRadius: 50,
+  borderRadius: 50
+};
+
+const UHCBadgeStyle = {
+  fontFamily: "TitilliumWeb-Bold",
+  textAlign: "center",
+  textAlignVertical: "center",
+  height: 27,
+  minWidth: 27,
+  marginLeft: 10,
+  borderRadius: 50
 };
 
 const roundIconButtonContainer = {
@@ -131,16 +141,78 @@ const getInnerBackgroundColor = (
       return "transparent";
   }
 };
+const getBadgeBackgroundColor = (
+  disabled: boolean | undefined,
+  buttonType: IButtonType
+) => {
+  if (disabled) {
+    return "white";
+  }
+
+  switch (buttonType) {
+    case "primary":
+      return "white";
+    case "secondary":
+      return theme.color.tertiary;
+    case "danger":
+      return "white";
+    case "secondaryDanger":
+      return theme.color.dangerPrimary;
+    default:
+      return "transparent";
+  }
+};
+const getBadgeTextColor = (
+  disabled: boolean | undefined,
+  buttonType: IButtonType
+) => {
+  if (disabled) {
+    return "#999999";
+  }
+
+  switch (buttonType) {
+    case "primary":
+      return "#999999";
+    case "secondary":
+      return "white";
+    case "danger":
+      return "#999999";
+    case "secondaryDanger":
+      return "white";
+    default:
+      return "transparent";
+  }
+};
+
+export const UHCBadge = styled.Text((props: any) => {
+  const badgeFontSize =
+    props.badgeNumber > 99 ? 14 : props.badgeNumber === 0 ? 0 : 16;
+
+  return {
+    ...UHCBadgeStyle,
+    backgroundColor: getBadgeBackgroundColor(props.disabled, props.buttonType),
+    color: getBadgeTextColor(props.disabled, props.buttonType),
+    fontSize: badgeFontSize
+  };
+});
+
 export const ButtonInnerContainer = styled.View((props: any) => {
   return {
     ...iconButtonContainer,
-    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType),
+    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType)
+  };
+});
+export const IconButtonInnerContainer = styled.View((props: any) => {
+  return {
+    ...iconButtonContainer,
+    justifyContent: "space-evenly",
+    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType)
   };
 });
 
 export const RoundButtonInnerContainer = styled.View((props: any) => {
   return {
     ...roundIconButtonContainer,
-    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType),
+    backgroundColor: getInnerBackgroundColor(props.disabled, props.buttonType)
   };
 });

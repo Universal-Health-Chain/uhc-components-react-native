@@ -7,6 +7,7 @@ import {
   ButtonText,
   SecondaryButtonText,
   ButtonInnerContainer,
+  UHCBadge
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -14,6 +15,7 @@ interface IProps {
   text: string;
   buttonType?: "primary" | "secondary" | "danger" | "secondaryDanger";
   disabled?: boolean;
+  badgeNumber?: number;
   onPress: (event: GestureResponderEvent) => void;
 }
 
@@ -28,11 +30,11 @@ const UHCButton: React.FunctionComponent<IProps> = ({
   buttonType,
   disabled,
   onPress,
+  badgeNumber
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
   });
-  
 
   const UHCButtonText: React.FunctionComponent<TextIProps> = ({
     text,
@@ -41,7 +43,6 @@ const UHCButton: React.FunctionComponent<IProps> = ({
   }) => {
     switch (buttonType) {
       case "secondaryDanger":
-        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       case "secondary":
         if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
       default:
@@ -64,6 +65,15 @@ const UHCButton: React.FunctionComponent<IProps> = ({
       >
         <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
           <UHCButtonText text={text} buttonType={buttonType} />
+          {!!badgeNumber && (
+            <UHCBadge
+              disabled={disabled}
+              buttonType={buttonType}
+              badgeNumber={badgeNumber}
+            >
+              {badgeNumber > 99 ? "99+" : badgeNumber}
+            </UHCBadge>
+          )}
         </ButtonInnerContainer>
       </ButtonGradient>
     </Button>

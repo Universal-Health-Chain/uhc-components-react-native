@@ -1,5 +1,5 @@
 import React from "react";
-import { GestureResponderEvent, View, Text } from "react-native";
+import { GestureResponderEvent } from "react-native";
 import {
   getButtonBackground,
   Button,
@@ -7,8 +7,8 @@ import {
   ButtonText,
   SecondaryButtonText,
   getIconColor,
-  ButtonInnerContainer,
   RoundButtonInnerContainer,
+  IconButtonInnerContainer,
 } from "./style";
 import { IconNames } from "./IconNames";
 import { useFonts } from "expo-font";
@@ -71,7 +71,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
         >
-          <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
+          <IconButtonInnerContainer disabled={disabled} buttonType={buttonType}>
             <Icon
               name={iconName}
               size={iconSize}
@@ -81,7 +81,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
               }}
             />
             <UHCButtonText text={text} buttonType={buttonType} />
-          </ButtonInnerContainer>
+          </IconButtonInnerContainer>
         </ButtonGradient>
       </Button>
     );

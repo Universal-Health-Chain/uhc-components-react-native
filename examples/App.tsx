@@ -42,13 +42,15 @@ import theme from 'uhc-themes';
 const App = () => {
   const [error, setError] = useState('');
   const [selected, setSelected] = useState(false);
-  const pwdRef = useRef(null);
+  const pwdRef = useRef<any>(null);
 
   const testDateInput = () => {
     return (
       <View style={{height: 200, justifyContent: 'space-around'}}>
         <UHCDateInput
-          minDate={moment().subtract('1', 'years').toISOString()}
+          minDate={moment()
+            .subtract('1', 'years')
+            .toISOString()}
           label="Fecha de nacimiento"
           setInputState={setError}
         />
@@ -163,16 +165,24 @@ const App = () => {
 
   const testButton = () => {
     return (
-      <View style={{width: '80%', justifyContent: 'space-around'}}>
+      <View
+        style={{
+          width: '80%',
+          justifyContent: 'space-around',
+          alignSelf: 'center',
+          height: '60%',
+        }}>
         <UHCButton
           text={'Primary'}
           buttonType={'primary'}
+          badgeNumber={3}
           onPress={() => {
             console.log(error);
           }}
         />
         <UHCButton
           text={'Secondary'}
+          badgeNumber={2}
           buttonType={'secondary'}
           onPress={() => {
             console.log('nice');
@@ -181,12 +191,22 @@ const App = () => {
         <UHCButton
           text={'Secondary danger'}
           buttonType={'secondaryDanger'}
+          badgeNumber={1}
+          onPress={() => {
+            console.log('nice');
+          }}
+        />
+        <UHCButton
+          text={'Danger'}
+          buttonType={'danger'}
+          badgeNumber={10}
           onPress={() => {
             console.log('nice');
           }}
         />
         <UHCButton
           text={'Disabled'}
+          badgeNumber={100}
           disabled
           onPress={() => {
             console.log('nice');
@@ -198,7 +218,13 @@ const App = () => {
 
   const testIconButton = () => {
     return (
-      <View style={{height: 200, justifyContent: 'space-around'}}>
+      <View
+        style={{
+          height: 200,
+          width: '80%',
+          alignSelf: 'center',
+          justifyContent: 'space-around',
+        }}>
         <UHCIconButton
           iconName={'group'}
           size={50}
@@ -240,9 +266,11 @@ const App = () => {
         height: '100%',
         justifyContent: 'center',
       }}>
-      {/* {testIconButton()} */}
+      {testIconButton()}
       {testButton()}
-      {testInput()}
+      {
+        //testInput()
+      }
       {
         //testDateInput()
       }
