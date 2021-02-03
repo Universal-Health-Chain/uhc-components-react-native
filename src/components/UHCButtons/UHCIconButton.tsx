@@ -4,11 +4,10 @@ import {
   getButtonBackground,
   Button,
   ButtonGradient,
-  ButtonText,
-  SecondaryButtonText,
   getIconColor,
   RoundButtonInnerContainer,
   IconButtonInnerContainer,
+  UHCButtonText
 } from "./style";
 import { IconNames } from "./IconNames";
 import { useFonts } from "expo-font";
@@ -37,26 +36,11 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
   buttonType,
   size,
   disabled,
-  onPress,
+  onPress
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
+    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
   });
-
-  const UHCButtonText: React.FunctionComponent<TextIProps> = ({
-    text,
-    buttonType,
-    disabled,
-  }) => {
-    switch (buttonType) {
-      case "secondary":
-        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
-      case "secondary":
-        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
-      default:
-        return <ButtonText>{text}</ButtonText>;
-    }
-  };
 
   if (!!text) {
     return (
@@ -77,10 +61,14 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
               size={iconSize}
               color={getIconColor(disabled, buttonType)}
               containerStyle={{
-                paddingHorizontal: 0,
+                paddingHorizontal: 0
               }}
             />
-            <UHCButtonText text={text} buttonType={buttonType} />
+            <UHCButtonText
+              text={text}
+              buttonType={buttonType}
+              disabled={disabled}
+            />
           </IconButtonInnerContainer>
         </ButtonGradient>
       </Button>
@@ -91,7 +79,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
         style={{
           width: size,
           height: size,
-          borderRadius: 5000,
+          borderRadius: 5000
         }}
         activeOpacity={0.9}
         onPress={onPress}
@@ -102,7 +90,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
             width: size,
             height: size,
             borderRadius: 5000,
-            maxHeight: 1000,
+            maxHeight: 1000
           }}
           colors={[...getButtonBackground(disabled, buttonType)]}
           start={{ x: 0, y: 0 }}
@@ -117,7 +105,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
               size={iconSize}
               color={getIconColor(disabled, buttonType)}
               containerStyle={{
-                paddingHorizontal: 0,
+                paddingHorizontal: 0
               }}
             />
           </RoundButtonInnerContainer>
@@ -131,7 +119,7 @@ UHCIconButton.defaultProps = {
   buttonType: "primary",
   size: 60,
   disabled: false,
-  iconSize: 28,
+  iconSize: 28
 };
 
 export default UHCIconButton;

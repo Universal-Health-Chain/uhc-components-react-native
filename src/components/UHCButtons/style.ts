@@ -19,9 +19,6 @@ export const getIconColor = (
 
   switch (buttonType) {
     case "secondary":
-      return theme.color.gray;
-    case "danger":
-      return theme.color.dangerPrimary;
     case "secondaryDanger":
       return theme.color.gray;
     default:
@@ -57,7 +54,7 @@ const buttonStyle = {
   height: 40,
   //width: 230,
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "center"
 };
 
 export const Button = styled.TouchableOpacity(buttonStyle);
@@ -68,14 +65,32 @@ const textStyle = {
   textAlignVertical: "center",
   ...Platform.select({
     ios: { fontSize: 20 },
-    android: { fontSize: 18 },
-  }),
+    android: { fontSize: 18 }
+  })
 };
 
-export const ButtonText = styled.Text({ ...textStyle, color: "white" });
-export const SecondaryButtonText = styled.Text({
-  ...textStyle,
-  color: "#999999",
+export const getFontColor = (
+  disabled: boolean | undefined,
+  buttonType: IButtonType
+) => {
+  if (disabled) {
+    return "white";
+  }
+
+  switch (buttonType) {
+    case "secondary":
+    case "secondaryDanger":
+      return "#999999";
+    default:
+      return "white";
+  }
+};
+
+export const UHCButtonText = styled.Text((props: any) => {
+  return {
+    ...textStyle,
+    color: getFontColor(props.disabled, props.buttonType)
+  };
 });
 
 const gradientStyle = {
@@ -87,8 +102,8 @@ const gradientStyle = {
   borderRadius: 50,
   ...Platform.select({
     ios: { minHeight: 45, maxHeight: 50 },
-    android: { minHeight: 38, maxHeight: 43 },
-  }),
+    android: { minHeight: 38, maxHeight: 43 }
+  })
 };
 
 export const ButtonGradient = styled(LinearGradient)(gradientStyle);
@@ -117,7 +132,7 @@ const roundIconButtonContainer = {
   width: "100%",
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: 5000,
+  borderRadius: 5000
 };
 
 const getInnerBackgroundColor = (

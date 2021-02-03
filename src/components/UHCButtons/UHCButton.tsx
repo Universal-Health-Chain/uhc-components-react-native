@@ -4,10 +4,9 @@ import {
   getButtonBackground,
   Button,
   ButtonGradient,
-  ButtonText,
-  SecondaryButtonText,
   ButtonInnerContainer,
-  UHCBadge
+  UHCBadge,
+  UHCButtonText
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -36,20 +35,6 @@ const UHCButton: React.FunctionComponent<IProps> = ({
     "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
-  const UHCButtonText: React.FunctionComponent<TextIProps> = ({
-    text,
-    buttonType,
-    disabled,
-  }) => {
-    switch (buttonType) {
-      case "secondaryDanger":
-      case "secondary":
-        if (!disabled) return <SecondaryButtonText>{text}</SecondaryButtonText>;
-      default:
-        return <ButtonText>{text}</ButtonText>;
-    }
-  };
-
   return (
     <Button
       style={{ width: "100%", height: 35 }}
@@ -64,7 +49,7 @@ const UHCButton: React.FunctionComponent<IProps> = ({
         end={{ x: 1, y: 0 }}
       >
         <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
-          <UHCButtonText text={text} buttonType={buttonType} />
+          <UHCButtonText text={text} buttonType={buttonType} disabled={disabled} />
           {!!badgeNumber && (
             <UHCBadge
               disabled={disabled}
