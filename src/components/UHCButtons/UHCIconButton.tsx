@@ -65,10 +65,9 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
               }}
             />
             <UHCButtonText
-              text={text}
               buttonType={buttonType}
               disabled={disabled}
-            />
+            >{text}</UHCButtonText>
           </IconButtonInnerContainer>
         </ButtonGradient>
       </Button>

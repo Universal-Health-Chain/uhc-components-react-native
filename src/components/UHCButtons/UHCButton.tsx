@@ -49,7 +49,10 @@ const UHCButton: React.FunctionComponent<IProps> = ({
         end={{ x: 1, y: 0 }}
       >
         <ButtonInnerContainer disabled={disabled} buttonType={buttonType}>
-          <UHCButtonText text={text} buttonType={buttonType} disabled={disabled} />
+          <UHCButtonText buttonType={buttonType} disabled={disabled}>
+            {text}
+          </UHCButtonText>
+
           {!!badgeNumber && (
             <UHCBadge
               disabled={disabled}
@@ -67,7 +70,7 @@ const UHCButton: React.FunctionComponent<IProps> = ({
 
 UHCButton.defaultProps = {
   buttonType: "primary",
-  disabled: false,
+  disabled: false
 };
 
 export default UHCButton;

@@ -1,6 +1,6 @@
 {
   "name": "uhc-components-react-native",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "Components for UHC projects on react native.",
   "main": "index.js",
   "peerDependencies": {
@@ -37,9 +37,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init_android": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.21.tgz && react-native link && react-native run-android",
-    "init_android_reset_cache": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.21.tgz && react-native link && react-native start --reset-cache && react-native run-android",
-    "init_ios": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.21.tgz && npx pod-install && react-native link && react-native run-ios"
+    "init_android": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.23.tgz && react-native link && react-native run-android",
+    "init_android_reset_cache": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.23.tgz && react-native link && react-native start --reset-cache && react-native run-android",
+    "init_ios": "npm pack && cd examples && npm i ../uhc-components-react-native-1.0.23.tgz && npx pod-install && react-native link && react-native run-ios"
   },
   "repository": {
     "type": "git",
