@@ -72,7 +72,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
     if (setInputState) {
       setInputState(inputValue);
     }
-  }, [inputValue]);
+  }, [inputValue, value]);
 
   return (
     <View
@@ -104,7 +104,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
             disabled={disabled}
             ref={ref}
             maxLength={255}
-            value={inputValue}
+            value={inputValue ? inputValue : value}
             onChangeText={(text: string) => {
               setInputValue(text);
             }}
