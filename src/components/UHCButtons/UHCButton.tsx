@@ -32,7 +32,7 @@ const UHCButton: React.FunctionComponent<IProps> = ({
   badgeNumber
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
   return (

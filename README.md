@@ -8,6 +8,8 @@ Using npm:
 
 ```
 npm i uhc-components-react-native --save
+
+To get the fonts its necessary react-native-unimodules
 ```
 
 ## Import

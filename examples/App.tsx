@@ -137,11 +137,25 @@ const App = () => {
 
   const testInput = () => {
     return (
-      <View style={{width: '100%', justifyContent: 'space-around'}}>
-        <UHCInput value={'Bruno'} label="Nombre" error={error} />
+      <View
+        style={{
+          width: '80%',
+          justifyContent: 'space-around',
+          alignSelf: 'center',
+        }}>
         <UHCInput
-          value={'NOICEEE'}
-          label="Fecha de nacimiento"
+          value={'Disabled value'}
+          label="Disabled label"
+          disabled={true}
+          setInputState={() => {}}
+        />
+
+        <UHCInput
+          value={'This is a value'}
+          label="This is a label"
+          disabled={false}
+          setInputState={() => {}}
+          containerStyle={{width: '50%', alignSelf: 'center'}}
           onSubmitEditing={() => {
             if (!!pwdRef && !!pwdRef.current) {
               pwdRef.current.focus();
@@ -243,7 +257,6 @@ const App = () => {
         <UHCIconButton
           text={'Add'}
           iconName={'add'}
-          size={'big'}
           onPress={() => {
             console.log('error');
           }}
@@ -266,11 +279,11 @@ const App = () => {
         height: '100%',
         justifyContent: 'center',
       }}>
-      {testIconButton()}
-      {testButton()}
       {
-        //testInput()
+        //testIconButton()
       }
+      {testButton()}
+      {testInput()}
       {
         //testDateInput()
       }

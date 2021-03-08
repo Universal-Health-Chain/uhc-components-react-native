@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ViewStyle, StyleProp, TextStyle } from "react-native";
 import {
   InputContainer,
   InputLabel,
   UHCTextInput,
   getContainerColor,
-  ContainerGradient,
+  ContainerGradient
 } from "./style";
 import { useFonts } from "expo-font";
 
@@ -13,6 +13,7 @@ interface IProps {
   label?: string;
   multiline?: boolean;
   value?: string;
+  disabled?: boolean;
   keyboardType?:
     | "default"
     | "numeric"
@@ -33,6 +34,8 @@ interface IProps {
   error?: string;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   labelWidth?: string;
+  containerStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 const UHCInputWithoutForward: React.ForwardRefRenderFunction<
@@ -44,18 +47,21 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
     multiline,
     labelWidth,
     value,
+    disabled,
     keyboardType,
     secureTextEntry,
     onSubmitEditing,
     setInputState,
     error,
     autoCapitalize,
+    containerStyle,
+    textStyle
   },
   ref
 ) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf"),
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
+    "TitilliumWeb-SemiBold": require("../assets/fonts/TitilliumWeb-SemiBold.ttf"),
+    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -70,10 +76,13 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
 
   return (
     <View
-      style={{
-        width: "100%",
-        height: multiline ? multilineHeight + 50 : 70,
-      }}
+      style={[
+        {
+          width: "100%",
+          height: multiline ? multilineHeight + 50 : 70
+        },
+        containerStyle ? containerStyle : {}
+      ]}
     >
       <InputLabel>{label}</InputLabel>
       <ContainerGradient
@@ -86,10 +95,13 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
         <InputContainer
           multiline={multiline}
           multilineHeight={multiline ? multilineHeight + 18 : 35}
+          disabled={disabled}
         >
           <UHCTextInput
             multilineHeight={multiline ? multilineHeight + 18 : 35}
             multiline={multiline}
+            editable={!disabled}
+            disabled={disabled}
             ref={ref}
             maxLength={255}
             value={inputValue}
@@ -106,6 +118,7 @@ const UHCInputWithoutForward: React.ForwardRefRenderFunction<
             onContentSizeChange={(event: any) => {
               setMultilineHeight(event.nativeEvent.contentSize.height);
             }}
+            style={textStyle ? textStyle : null}
           />
         </InputContainer>
       </ContainerGradient>
@@ -119,11 +132,12 @@ export const UHCInput = React.forwardRef(UHCInputWithoutForward);
 
 UHCInput.defaultProps = {
   value: "",
+  disabled: false,
   multiline: false,
   keyboardType: "default",
   secureTextEntry: false,
   labelWidth: "30%",
-  autoCapitalize: "sentences",
+  autoCapitalize: "sentences"
 };
 
 export default UHCInput;

@@ -46,8 +46,8 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
   ref
 ) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-SemiBold": require("../../../assets/fonts/TitilliumWeb-SemiBold.ttf"),
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf"),
+    "TitilliumWeb-SemiBold": require("../assets/fonts/TitilliumWeb-SemiBold.ttf"),
+    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf"),
   });
 
   const [show, setShow] = useState(false);

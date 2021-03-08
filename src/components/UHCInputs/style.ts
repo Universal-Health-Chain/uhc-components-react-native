@@ -20,7 +20,6 @@ export const getContainerColor = (
 
 const inputContainerStyle = {
   width: "100%",
-  backgroundColor: "white",
   alignItems: "center",
   justifyContent: "center",
   paddingVertical: "1%",
@@ -32,7 +31,8 @@ export const InputContainer = styled.View((props: any) => {
       ...inputContainerStyle,
       borderRadius: props.multiline ? 15 : 17,
       height: props.multilineHeight,
-    },
+      backgroundColor: props.disabled ? "lightgray" : "white"
+    }
   ];
 });
 
@@ -49,6 +49,7 @@ const labelStyle = {
 
 export const InputLabel = styled.Text((props: any) => {
   return [
+    props.style ? props.style : {},
     {
       ...labelStyle,
       borderRadius: props.multiline ? 15 : 17,
@@ -61,7 +62,6 @@ const textStyle = {
   textAlign: "left",
   textAlignVertical: "center",
   color: theme.color.gray,
-  backgroundColor: "white",
   justifyContent: "center",
   borderRadius: 17,
   paddingVertical: 0,
@@ -81,6 +81,7 @@ export const UHCTextInput = styled.TextInput((props: any) => {
       ...textStyle,
       borderRadius: props.multiline ? 15 : 17,
       height: props.multilineHeight,
+      backgroundColor: props.disabled ? "lightgray" : "white"
     },
   ];
 });

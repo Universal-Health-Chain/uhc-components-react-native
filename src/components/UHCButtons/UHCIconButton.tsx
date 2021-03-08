@@ -39,7 +39,7 @@ const UHCIconButton: React.FunctionComponent<IProps> = ({
   onPress
 }) => {
   const [loaded] = useFonts({
-    "TitilliumWeb-Bold": require("../../../assets/fonts/TitilliumWeb-Bold.ttf")
+    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
   if (!!text) {
