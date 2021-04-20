@@ -5,6 +5,7 @@ import {
   InputLabel,
   getContainerColor,
   ContainerGradient,
+  UHCDateInputText
 } from "./style";
 import { useFonts } from "expo-font";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -23,7 +24,6 @@ interface IProps {
   onDateChange?: any;
   setInputState: React.Dispatch<any>;
   error?: string;
-  labelWidth?: string;
   showDate?: React.Dispatch<any>;
 }
 
@@ -33,7 +33,6 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
     mode,
     minDate,
     maxDate,
-    labelWidth,
     date,
     language,
     disabled,
@@ -41,13 +40,13 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
     onDateChange,
     setInputState,
     error,
-    showDate,
+    showDate
   },
   ref
 ) => {
   const [loaded] = useFonts({
     "TitilliumWeb-SemiBold": require("../assets/fonts/TitilliumWeb-SemiBold.ttf"),
-    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf"),
+    "TitilliumWeb-Bold": require("../assets/fonts/TitilliumWeb-Bold.ttf")
   });
 
   const [show, setShow] = useState(false);
@@ -76,19 +75,7 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
               }
             }}
           >
-            <Text
-              style={[
-                {
-                  fontFamily: "TitilliumWeb-Bold",
-                  textAlign: "left",
-                  fontSize: 18,
-                  paddingVertical: 0,
-                  marginVertical: 0,
-                  color: "#999999",
-                },
-              ]}
-            >
-                    
+            <UHCDateInputText>
               {inputDate &&
                 (() => {
                   if (mode === "date") {
@@ -99,15 +86,16 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                     return moment(inputDate).format("HH:mm");
                   }
                 })()}
-                    
-            </Text>
+            </UHCDateInputText>
             {Platform.OS === "android" ? (
               show && (
                 <DateTimePicker
                   value={(() => {
                     if (mode === "time") {
                       return new Date(
-                        moment().add(1, "minute").format("MM/DD/YYYY HH:mm")
+                        moment()
+                          .add(1, "minute")
+                          .format("MM/DD/YYYY HH:mm")
                       );
                     } else {
                       return date
@@ -139,7 +127,9 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                 date={(() => {
                   if (mode === "time") {
                     return new Date(
-                      moment().add(1, "minute").format("MM/DD/YYYY HH:mm")
+                      moment()
+                        .add(1, "minute")
+                        .format("MM/DD/YYYY HH:mm")
                     );
                   } else {
                     return date
@@ -147,7 +137,7 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
                       : new Date(moment().format("MM/DD/YYYY"));
                   }
                 })()}
-                onConfirm={(date) => {
+                onConfirm={date => {
                   setShow(false);
                   if (date) {
                     setInputDate(moment(date).toISOString());
@@ -178,9 +168,8 @@ const UHCDateInput: React.FunctionComponent<IProps> = (
 
 UHCDateInput.defaultProps = {
   mode: "date",
-  labelWidth: "30%",
   disabled: false,
-  language: "es",
+  language: "es"
 };
 
 export default UHCDateInput;

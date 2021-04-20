@@ -46,7 +46,13 @@ const App = () => {
 
   const testDateInput = () => {
     return (
-      <View style={{height: 200, justifyContent: 'space-around'}}>
+      <View
+        style={{
+          height: 200,
+          justifyContent: 'space-around',
+          width: '80%',
+          alignSelf: 'center',
+        }}>
         <UHCDateInput
           minDate={moment()
             .subtract('1', 'years')
@@ -95,8 +101,9 @@ const App = () => {
     return (
       <View
         style={{
-          height: 200,
           justifyContent: 'space-around',
+          width: '80%',
+          alignSelf: 'center',
         }}>
         <UHCSelectItem
           label={'HOLA'}
@@ -282,15 +289,15 @@ const App = () => {
       {
         //testIconButton()
       }
-      {testButton()}
-      {testInput()}
       {
-        //testDateInput()
+        //testButton()
       }
+      {testInput()}
+      {testDateInput()}
       {
         //testRadioButton()
       }
-      {/* {testSelectItem(data)} */}
+      {testSelectItem(data)}
     </View>
   );
 };

@@ -34,7 +34,7 @@ const labelStyle = {
   fontFamily: "TitilliumWeb-Bold",
   textAlign: "left",
   color: theme.color.gray,
-  marginHorizontal: "7%",
+  marginHorizontal: 9,
   fontSize: 15
 };
 
