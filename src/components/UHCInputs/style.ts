@@ -101,9 +101,9 @@ export const UHCDateInputText = styled.Text((props: any) => {
     {
       fontFamily: "TitilliumWeb-Bold",
       textAlign: "left",
+      minHeight: 30,
+      textAlignVertical: "center",
       fontSize: 18,
-      paddingVertical: 0,
-      marginVertical: 0,
       color: "#999999",
       paddingLeft: 10
     }
