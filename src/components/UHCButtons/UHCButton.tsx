@@ -5,10 +5,10 @@ import {
   Button,
   ButtonGradient,
   ButtonInnerContainer,
-  UHCBadge,
   UHCButtonText
 } from "./style";
 import { useFonts } from "expo-font";
+import UHCBadge from "./components/UHCBadge";
 
 interface IProps {
   text: string;
@@ -53,14 +53,19 @@ const UHCButton: React.FunctionComponent<IProps> = ({
             {text}
           </UHCButtonText>
 
-          {!!badgeNumber && (
-            <UHCBadge
+          {/* <UHCBadge
               disabled={disabled}
               buttonType={buttonType}
               badgeNumber={badgeNumber}
             >
               {badgeNumber > 99 ? "99+" : badgeNumber}
-            </UHCBadge>
+            </UHCBadge> */}
+          {!!badgeNumber && (
+            <UHCBadge
+              disabled={disabled}
+              buttonType={buttonType}
+              badgeNumber={badgeNumber}
+            />
           )}
         </ButtonInnerContainer>
       </ButtonGradient>

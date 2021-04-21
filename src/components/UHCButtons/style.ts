@@ -117,10 +117,15 @@ const iconButtonContainer = {
   borderRadius: 50
 };
 
-const UHCBadgeStyle = {
+const UHCBadgeTextStyle = {
   fontFamily: "TitilliumWeb-Bold",
   textAlign: "center",
-  textAlignVertical: "center",
+  textAlignVertical: "center"
+};
+
+const UHCBadgeContainerStyle = {
+  justifyContent: "center",
+  alignItems: "center",
   height: 27,
   minWidth: 27,
   marginLeft: 10,
@@ -199,15 +204,20 @@ const getBadgeTextColor = (
   }
 };
 
-export const UHCBadge = styled.Text((props: any) => {
+export const UHCBadgeNumber = styled.Text((props: any) => {
   const badgeFontSize =
     props.badgeNumber > 99 ? 14 : props.badgeNumber === 0 ? 0 : 16;
 
   return {
-    ...UHCBadgeStyle,
-    backgroundColor: getBadgeBackgroundColor(props.disabled, props.buttonType),
+    ...UHCBadgeTextStyle,
     color: getBadgeTextColor(props.disabled, props.buttonType),
     fontSize: badgeFontSize
+  };
+});
+export const UHCBadgeContainer = styled.View((props: any) => {
+  return {
+    ...UHCBadgeContainerStyle,
+    backgroundColor: getBadgeBackgroundColor(props.disabled, props.buttonType)
   };
 });
 
